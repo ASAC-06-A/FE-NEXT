@@ -25,7 +25,7 @@ export const getProfileData = async () => {
 };
 
 // 프로필 페이지 PATCH
-export const patchProfileData = async (name) => {
+export const patchProfileData = async ({ name, introduce }) => {
   try {
     const response = await fetch(`${API_URL}/profile`, {
       method: 'PATCH',
@@ -33,7 +33,7 @@ export const patchProfileData = async (name) => {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name, introduce }),
     });
 
     if (!response.ok) {

@@ -9,7 +9,9 @@ function ProfileInfoView({ profileData, handleEditToggle }) {
         </div>
         <div className='flex justify-between'>
           <label className='text-base text-gray-600'>자기 소개</label>
-          <p className='text-gray-500'>{profileData.bio || '자기소개 영역입니다.'}</p>
+          <p className={`${profileData.introduce ? 'text-base' : 'text-gray-600'}`}>
+            {profileData.introduce || '자기소개 영역입니다.'}
+          </p>
         </div>
       </div>
       <div className='flex justify-end mt-6'>

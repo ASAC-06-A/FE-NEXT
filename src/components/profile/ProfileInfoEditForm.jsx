@@ -3,7 +3,10 @@
 import { useState } from 'react';
 
 function ProfileInfoEditForm({ profileData, handleEdit, handleEditToggle }) {
-  const [formData, setFormData] = useState({ name: profileData.name });
+  const [formData, setFormData] = useState({
+    name: profileData.name,
+    introduce: profileData.introduce,
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,9 +34,9 @@ function ProfileInfoEditForm({ profileData, handleEdit, handleEditToggle }) {
         <div className='flex justify-between items-center'>
           <label className='text-base text-gray-600'>자기 소개</label>
           <textarea
-            name='bio'
-            value={formData?.bio}
-            // onChange={handleInputChange} 자기소개 미구현
+            name='introduce'
+            value={formData?.introduce}
+            onChange={handleInputChange}
             className='border border-gray-300 rounded px-3 py-2 w-64 h-20 resize-none'
           />
         </div>

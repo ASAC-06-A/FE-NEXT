@@ -27,9 +27,9 @@ function ProfileClientComponent() {
     setIsEditing((prev) => !prev);
   };
 
-  const handleEdit = async (name) => {
+  const handleEdit = async (name, introduce) => {
     try {
-      await patchProfileData(name);
+      await patchProfileData(name, introduce);
       fetchProfileData();
     } catch (error) {
       console.error('Error deleting study data:', error);
