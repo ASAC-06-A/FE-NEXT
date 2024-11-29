@@ -13,9 +13,9 @@ function StudyView({ studyDetailData, onEdit, thumbnail }) {
       <Image
         className='w-full h-64 object-cover rounded-md'
         src={thumbnail}
-        alt={studyDetailData.studyTitle}
-        width={500}
-        height={256}
+        alt={studyDetailData?.studyTitle || '기본 이미지'}
+        width={0}
+        height={0}
         placeholder='blur'
         blurDataURL='/default-thumbnail.jpg'
         priority

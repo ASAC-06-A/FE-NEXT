@@ -36,8 +36,8 @@ function StudyEditForm({ studyDetailData, onCancel, onSave, thumbnail }) {
         className='w-full h-64 object-cover rounded-md'
         src={thumbnail}
         alt={formData.studyTitle}
-        width={500}
-        height={256}
+        width={0}
+        height={0}
         placeholder='blur'
         blurDataURL='/default-thumbnail.jpg'
         priority
