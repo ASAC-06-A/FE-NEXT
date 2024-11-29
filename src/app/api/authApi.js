@@ -21,14 +21,14 @@ export const signin = async ({ email, password }) => {
 };
 
 // 회원가입 POST
-export const signup = async ({ userName, email, password }) => {
+export const signup = async ({ username, email, password }) => {
   try {
     const response = await fetch(`${API_URL}/user/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userName, email, password }),
+      body: JSON.stringify({ username, email, password }),
     });
 
     if (response.ok) {
@@ -71,4 +71,4 @@ export const deleteAccount = async () => {
   }
 };
 
-// 비밀번호 변경
+// 비밀번호 변경 - 미구현
