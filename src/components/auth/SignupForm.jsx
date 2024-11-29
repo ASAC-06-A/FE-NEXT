@@ -15,9 +15,9 @@ export function SignupForm() {
 
   const router = useRouter();
 
-  const handleSingup = async ({ userName, email, password }) => {
+  const handleSingup = async ({ username, email, password }) => {
     try {
-      const data = await signup({ userName, email, password });
+      const data = await signup({ username, email, password });
 
       router.push('/signin');
     } catch (error) {
@@ -34,16 +34,16 @@ export function SignupForm() {
               사용자명
             </label>
             <input
-              name='userName'
+              name='username'
               type='text'
               className='mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
-              {...register('userName', {
+              {...register('username', {
                 required: { value: true, message: '사용자명을 입력해주세요.' },
                 minLength: { value: 2, message: '사용자명은 2자 이상으로 입력해주세요.' },
               })}
             />
-            {errors?.userName && (
-              <div className='text-red-500 mt-1'>{errors?.userName?.message}</div>
+            {errors?.username && (
+              <div className='text-red-500 mt-1'>{errors?.username?.message}</div>
             )}
           </div>
           <div>
