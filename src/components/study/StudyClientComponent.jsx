@@ -2,8 +2,10 @@
 
 import { deleteStudyData, getStudyData, postStudyData } from '@/app/api/studyApi';
 import SelectBox from '@/components/common/SelectBox';
+
 import AddStudyModal from '@/components/study/AddStudyModal';
 import CardList from '@/components/study/CardList';
+import Toast from '@/lib/showToast';
 
 import { useEffect, useState } from 'react';
 
@@ -16,6 +18,7 @@ function StudyClientComponent() {
       const data = await getStudyData();
       setStudyDatas(data);
     } catch (error) {
+      Toast('error', '강의 조회를 실패하였습니다.');
       console.error('Error fetching study data:', error);
     }
   };
@@ -28,7 +31,9 @@ function StudyClientComponent() {
     try {
       await deleteStudyData(id);
       fetchStudyData();
+      Toast('success', '강의가 성공적으로 삭제되었습니다.');
     } catch (error) {
+      Toast('error', '강의 삭제를 실패하였습니다.');
       console.error('Error deleting study data:', error);
     }
   };
@@ -41,9 +46,10 @@ function StudyClientComponent() {
   const handleAdd = async ({ studyTitle, desc, category, url }) => {
     try {
       await postStudyData({ studyTitle, desc, category, url });
-
       fetchStudyData();
+      Toast('success', '강의가 성공적으로 추가되었습니다.');
     } catch (error) {
+      Toast('error', '강의 추가를 실패하였습니다.');
       console.error('Error adding study data:', error);
     }
   };
