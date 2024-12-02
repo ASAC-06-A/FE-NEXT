@@ -1,17 +1,14 @@
 'use client';
 
 import { createContext, useState, useContext } from 'react';
-import { createPortal } from 'react-dom';
 
 const ModalContext = createContext();
 
-const Modal = ({ children, handleReset }) => {
+const Modal = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
-    if (handleReset) handleReset();
-    setIsOpen(true);
-  };
+  const openModal = () => setIsOpen(true);
+
   const closeModal = () => setIsOpen(false);
 
   return (
@@ -23,22 +20,13 @@ const Modal = ({ children, handleReset }) => {
 
 const useModal = () => useContext(ModalContext);
 
-const OpenButton = ({ children }) => {
+const OpenButton = ({ children, style }) => {
   const { openModal } = useModal();
   return (
-    <button
-      onClick={openModal}
-      className='block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-6 py-2.5 shadow-md transition duration-300'
-      type='button'
-    >
+    <button onClick={openModal} className={style} type='button'>
       {children}
     </button>
   );
-};
-
-const ModalPortal = ({ children }) => {
-  const element = document.getElementById('modal-root');
-  return createPortal(children, element);
 };
 
 const Content = ({ children }) => {
@@ -62,23 +50,22 @@ const Content = ({ children }) => {
   );
 };
 
-const CloseButton = ({ onClick, children }) => {
+const CloseButton = ({ children, style }) => {
   const { closeModal } = useModal();
 
   return (
     <button
       onClick={() => {
         closeModal();
-        if (onClick) onClick();
       }}
-      className='text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 transition duration-300'
+      className={style}
     >
       {children}
     </button>
   );
 };
 
-const SubmitButton = ({ onClick, children }) => {
+const SubmitButton = ({ onClick, children, style }) => {
   const { closeModal } = useModal();
 
   return (
@@ -87,7 +74,7 @@ const SubmitButton = ({ onClick, children }) => {
         closeModal();
         if (onClick) onClick();
       }}
-      className='text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 rounded-lg text-sm px-5 py-2.5 shadow-md transition duration-300'
+      className={style}
     >
       {children}
     </button>
@@ -105,7 +92,6 @@ const ModalBody = ({ children }) => {
 // Modal 컴포넌트에 자식 컴포넌트 추가
 Modal.OpenButton = OpenButton;
 Modal.Content = Content;
-Modal.ModalPortal = ModalPortal;
 Modal.CloseButton = CloseButton;
 Modal.ModalTitle = ModalTitle;
 Modal.SubmitButton = SubmitButton;
