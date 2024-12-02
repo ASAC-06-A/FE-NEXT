@@ -16,7 +16,7 @@ function ProfileDropdown() {
       </button>
 
       {isDropdownOpen && (
-        <div className='absolute left-0 mt-2 w-32 bg-white rounded-md shadow-lg border'>
+        <div className='absolute left-0 mt-2 w-32 bg-white rounded-md shadow-lg border z-10'>
           <ul>
             <li>
               <Link
