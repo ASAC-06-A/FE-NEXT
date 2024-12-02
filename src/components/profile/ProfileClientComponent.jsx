@@ -43,7 +43,11 @@ function ProfileClientComponent() {
   return (
     <div className='max-w-3xl mx-auto p-6 space-y-8'>
       {isEditing ? (
-        <ProfileInfoEditForm handleEdit={handleEdit} handleEditToggle={handleEditToggle} />
+        <ProfileInfoEditForm
+          profileData={profileData}
+          handleEdit={handleEdit}
+          handleEditToggle={handleEditToggle}
+        />
       ) : (
         <ProfileInfoView profileData={profileData} handleEditToggle={handleEditToggle} />
       )}
