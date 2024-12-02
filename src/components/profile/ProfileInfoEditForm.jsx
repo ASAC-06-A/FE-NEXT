@@ -37,6 +37,7 @@ function ProfileInfoEditForm({ profileData, handleEdit, handleEditToggle }) {
             name='introduce'
             value={formData?.introduce}
             onChange={handleInputChange}
+            placeholder='자기소개를 입력해주세요.'
             className='border border-gray-300 rounded px-3 py-2 w-64 h-20 resize-none'
           />
         </div>
