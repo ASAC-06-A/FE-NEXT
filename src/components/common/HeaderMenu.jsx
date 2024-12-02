@@ -11,8 +11,8 @@ const getCookie = async () => {
   return isLoggedIn;
 };
 
-function HeaderMenu() {
-  const isLoggedIn = getCookie();
+async function HeaderMenu() {
+  const isLoggedIn = await getCookie();
 
   return (
     <>
