@@ -1,8 +1,10 @@
 import './globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 import ThemeProvider from '@/context/ThemeProvider';
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
 import { META } from '@/constants/metadata';
+import ToastProvider from '@/context/ToastProvider';
 
 export const metadata = {
   metadataBase: new URL(META.url),
@@ -41,9 +43,9 @@ export default function RootLayout({ children }) {
     <html lang='ko'>
       <body>
         <ThemeProvider>
+          <ToastProvider />
           <Header />
           <div className='min-h-screen'>{children}</div>
-
           <Footer />
         </ThemeProvider>
       </body>
