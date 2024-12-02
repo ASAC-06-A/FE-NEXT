@@ -35,7 +35,7 @@ function ProfileInfoEditForm({ profileData, handleEdit, handleEditToggle }) {
           <label className='text-base text-gray-600'>자기 소개</label>
           <textarea
             name='introduce'
-            value={formData?.introduce}
+            value={formData.introduce || ''}
             onChange={handleInputChange}
             placeholder='자기소개를 입력해주세요.'
             className='border border-gray-300 rounded px-3 py-2 w-64 h-20 resize-none'
