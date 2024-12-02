@@ -5,7 +5,9 @@ function AccontDeleteModal() {
   const onAccountDelete = async () => {
     try {
       await deleteAccount();
+      Toast('success', '회원 탈퇴가 완료되었습니다.');
     } catch (error) {
+      Toast('error', '회원 탈퇴를 실패하였습니다.');
       console.error('Error deleting account data:', error);
     }
   };

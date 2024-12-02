@@ -16,6 +16,7 @@ function ProfileClientComponent() {
       const data = await getProfileData();
       setProfileData(data);
     } catch (error) {
+      Toast('error', '프로필 조회를 실패하였습니다.');
       console.error('Error fetching study data:', error);
     }
   };
@@ -32,7 +33,9 @@ function ProfileClientComponent() {
     try {
       await patchProfileData(name, introduce);
       fetchProfileData();
+      Toast('success', '프로필이 성공적으로 저장되었습니다.');
     } catch (error) {
+      Toast('error', '프로필 저장을 실패하였습니다.');
       console.error('Error deleting study data:', error);
     }
   };
