@@ -2,25 +2,23 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Login Dockerhub
-      env:
-        DOCKER_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
-        DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD      
+      - uses: actions/checkout@v3
+      - name: Login Dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-    - name: Build the Docker image
-      run: docker build -t 도커아이디/도커저장소이름 .
-    - name: taging
-      run: docker tag 도커아이디/도커저장소이름:latest 도커아이디/도커저장소이름:latest
-    - name: Push to Dockerhub
-      run: docker push 도커아이디/도커저장소이름:latest
+      - name: Build the Docker image
+        run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action
+      - name: taging
+        run: docker tag ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest
+      - name: Push to Dockerhub
+        run: docker push ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest
