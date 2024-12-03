@@ -13,6 +13,7 @@ export const metadata = {
   },
   title: META.title,
   description: META.description,
+  manifest: '/manifest.json',
   keywords: [...META.keyword],
   icons: {
     icon: '/favicon.ico',

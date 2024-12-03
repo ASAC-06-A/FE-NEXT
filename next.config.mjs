@@ -1,8 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import withPWA from 'next-pwa';
+
+const withPWAConfig = withPWA({
+  dest: 'public',
+});
+
+export default withPWAConfig({
   images: {
     unoptimized: true,
   },
-};
-
-export default nextConfig;
+});
