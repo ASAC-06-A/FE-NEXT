@@ -17,8 +17,8 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action .
+        run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/studyhub-next-nginx:latest .
       - name: taging
-        run: docker tag ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest
+        run: docker tag ${{secrets.DOCKERHUB_USERNAME}}/studyhub-next-nginx:latest ${{secrets.DOCKERHUB_USERNAME}}/studyhub-next-nginx:latest
       - name: Push to Dockerhub
-        run: docker push ${{secrets.DOCKERHUB_USERNAME}}/studyhub-github-action:latest
+        run: docker push ${{secrets.DOCKERHUB_USERNAME}}/studyhub-next-nginx:latest
